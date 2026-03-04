@@ -1,25 +1,20 @@
 {
     "configurations": [
         {
-            "name": "Mac",
-            "compilerPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++",
-            "intelliSenseMode": "macos-clang-arm64",
+            "name": "Pico",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/local/include",
-                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1",
-                "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include",
-                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include",
-                "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"
+                "${workspaceFolder}/build/**",
+                "${userHome}/.pico-sdk/sdk/2.2.0/**"
             ],
-            "macFrameworkPath": [
-                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            "forcedInclude": [
+                "${userHome}/.pico-sdk/sdk/2.2.0/src/common/pico_base_headers/include/pico.h"
             ],
+            "defines": [],
+            "compilerPath": "${userHome}/.pico-sdk/toolchain/14_2_Rel1/bin/arm-none-eabi-gcc",
             "cStandard": "c17",
-            "cppStandard": "c++17",
-            "compileCommands": [
-                "${workspaceFolder}/build/compile_commands.json"
-            ]
+            "cppStandard": "c++14",
+            "intelliSenseMode": "linux-gcc-arm"
         }
     ],
     "version": 4

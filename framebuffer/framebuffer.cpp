@@ -1,7 +1,6 @@
-#include <cstdint>
+#include <stdio.h>
 #include <iostream>
-
-using namespace std;
+#include "pico/stdlib.h"
 
 uint8_t framebuffer[512] = {0};
 

@@ -1,21 +1,17 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.31.6)
 
-# initialize the SDK based on PICO_SDK_PATH
-# note: this must happen before project()
-include(pico_sdk_import.cmake)
+include(/Users/thorbenschirra/pico-sdk/pico_sdk_init.cmake)
+include 
 
 project(graphics_pipeline_128x32)
-
-# initialize the Raspberry Pi Pico SDK
-pico_sdk_init()
-
-# rest of your project
-add_executable(
-    framebuffer.cpp
+add_executable(graphics_pipeline_128x32
+    main.cpp
+    framebuffer/framebuffer.cpp
+    driver/ssd1305.cpp
 )
 
-# Add pico_stdlib library which aggregates commonly used features
-target_link_libraries()
+pico_sdk_init()
 
-# create map/bin/hex/uf2 file in addition to ELF.
-pico_add_extra_outputs()
+target_link_libraries(graphics_pipeline_128x32 pico_stdlib)
+
+pico_add_extra_outputs(graphics_pipeline_128x32)
