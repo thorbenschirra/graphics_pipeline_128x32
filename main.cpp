@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <iostream>
-#include "ssd1305.cpp"
+#include "ssd1305.h"
+#include "string.h"
 
 using namespace std;
 

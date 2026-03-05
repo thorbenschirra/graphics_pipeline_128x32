@@ -11,12 +11,12 @@ void ssd1305_send_command(uint8_t command)
     gpio_put(SPI_CS, 1);
 }
 
-void ssd1305_send_data(uint8_t data, size_t length)
+void ssd1305_send_data(uint8_t *data, size_t length)
 {
     gpio_put(SPI_CS, 0);
     gpio_put(DC_PIN, 1);
 
-    spi_write_blocking(spi0, &data, length);
+    spi_write_blocking(spi0, data, length);
 
     gpio_put(SPI_CS, 1);
 }
