@@ -2,6 +2,8 @@
 #include <iostream>
 #include "pico/stdlib.h"
 
+using namespace std;
+
 uint8_t framebuffer[512] = {0};
 
 int calcPage(int y)
