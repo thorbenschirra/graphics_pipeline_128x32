@@ -12,6 +12,7 @@ pico_sdk_init()
 add_executable(graphics_pipeline_128x32
 main.cpp
 framebuffer/framebuffer.cpp
+framebuffer/framebuffer.h
 driver/ssd1305.cpp
 )
 
