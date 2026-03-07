@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <iostream>
 #include "pico/stdlib.h"
+#include "string.h"
 
 using namespace std;
 
@@ -189,11 +190,3 @@ public:
         }
     }
 };
-
-int main()
-{
-    Framebuffer fb;
-    fb.drawCircle(0, 0, 3);
-
-    return 0;
-}

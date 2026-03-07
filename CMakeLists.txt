@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.31.6)
 
-include(/Users/thorbenschirra/pico-sdk/pico_sdk_init.cmake)
+set(PICO_BOARD pico2_w)
+set(PICO_PLATFORM rp2350)
+
+include(/Users/thorbenschirra/pico-sdk/external/pico_sdk_import.cmake)
 
 project(graphics_pipeline_128x32)
 
@@ -8,12 +11,12 @@ pico_sdk_init()
 
 add_executable(graphics_pipeline_128x32
 main.cpp
-framebuffer/
-driver/
+framebuffer/framebuffer.cpp
+driver/ssd1305.cpp
 )
 
 target_include_directories(graphics_pipeline_128x32 PRIVATE
-    driver
+    driver/
     framebuffer/
 )
 

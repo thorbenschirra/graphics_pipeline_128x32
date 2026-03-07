@@ -6,7 +6,7 @@ void ssd1305_send_command(uint8_t command)
     gpio_put(SPI_CS, 0);
     gpio_put(DC_PIN, 0);
 
-    spi_write_blocking(spi0, &command, 1);
+    spi_write_blocking(spi1, &command, 1);
 
     gpio_put(SPI_CS, 1);
 }
@@ -16,7 +16,7 @@ void ssd1305_send_data(uint8_t *data, size_t length)
     gpio_put(SPI_CS, 0);
     gpio_put(DC_PIN, 1);
 
-    spi_write_blocking(spi0, data, length);
+    spi_write_blocking(spi1, data, length);
 
     gpio_put(SPI_CS, 1);
 }
@@ -24,14 +24,19 @@ void ssd1305_send_data(uint8_t *data, size_t length)
 void ssd1305_init()
 {
 
+    spi_init(spi1, 1000000);
+
     // set SPI pin functions
     gpio_set_function(SPI_TX, GPIO_FUNC_SPI);
     gpio_set_function(SPI_SCK, GPIO_FUNC_SPI);
-    gpio_set_function(SPI_CS, GPIO_FUNC_SPI);
 
     // initialize control pins as GPIO outputs
     gpio_init(DC_PIN);
     gpio_set_dir(DC_PIN, GPIO_OUT);
+
+    gpio_init(SPI_CS);
+    gpio_set_dir(SPI_CS, GPIO_OUT);
+    gpio_put(SPI_CS, 1);
 
     gpio_init(RST_PIN);
     gpio_set_dir(RST_PIN, GPIO_OUT);
@@ -83,10 +88,4 @@ void ssd1305_init()
 
     // turn display on
     ssd1305_send_command(0xAF);
-}
-
-int main()
-{
-    stdio_init_all();
-    ssd1305_init();
 }
