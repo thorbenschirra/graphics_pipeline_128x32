@@ -10,5 +10,5 @@ constexpr uint RST_PIN = 12;
 
 void ssd1305_init();
 void ssd1305_send_data(uint8_t *data, size_t length);
-
+void ssd1305_flush(uint8_t *buffer);
 void ssd1305_send_command(uint8_t command);

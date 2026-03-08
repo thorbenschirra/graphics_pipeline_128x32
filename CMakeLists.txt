@@ -14,11 +14,13 @@ main.cpp
 framebuffer/framebuffer.cpp
 framebuffer/framebuffer.h
 driver/ssd1305.cpp
+letters/letters.cpp
 )
 
 target_include_directories(graphics_pipeline_128x32 PRIVATE
     driver/
     framebuffer/
+    letters/
 )
 
 target_link_libraries(graphics_pipeline_128x32 

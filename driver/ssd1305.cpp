@@ -21,6 +21,19 @@ void ssd1305_send_data(uint8_t *data, size_t length)
     gpio_put(SPI_CS, 1);
 }
 
+void ssd1305_flush(uint8_t *buffer)
+{
+    for (int page = 0; page < 4; page++)
+    {
+        ssd1305_send_command(0xB0 + page); // set page address
+        ssd1305_send_command(0x02);        // lower column start
+        ssd1305_send_command(0x10);        // higher column start
+
+        // send 128 bytes for this page
+        ssd1305_send_data(buffer + (page * 128), 128);
+    }
+}
+
 void ssd1305_init()
 {
 
@@ -67,6 +80,10 @@ void ssd1305_init()
     // display start line
     ssd1305_send_command(0x40);
 
+    // memory addressing mode
+    ssd1305_send_command(0x20);
+    ssd1305_send_command(0x00);
+
     // lower column start address
     ssd1305_send_command(0x02);
     // higher column start address
@@ -77,10 +94,10 @@ void ssd1305_init()
     ssd1305_send_command(0xFF);
 
     // segment remap
-    ssd1305_send_command(0xA0);
+    ssd1305_send_command(0xA1);
 
     // COM scan direction
-    ssd1305_send_command(0xC0);
+    ssd1305_send_command(0xC8);
 
     // entire display on
     ssd1305_send_command(0xA4);

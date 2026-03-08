@@ -1,7 +1,9 @@
 #include <stdio.h>
+#include <string>
 #include "ssd1305.h"
 #include "string.h"
 #include "framebuffer.h"
+#include "letters.cpp"
 
 int main()
 {
@@ -9,10 +11,12 @@ int main()
     ssd1305_init();
 
     Framebuffer fb;
-    fb.drawLine(0, 0, 12, 10);
-    ssd1305_send_data(fb.getBuffer(), 512);
-
-    while (true)
+    /* void drawLetter(uint8_t *letter)
     {
-    }
+        for (int i = 0; i < 64; i++)
+        {
+        }
+    } */
+
+    ssd1305_flush(fb.getBuffer());
 }
