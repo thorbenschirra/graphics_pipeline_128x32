@@ -1,5 +1,6 @@
 #include "framebuffer.h"
 #include "string.h"
+#include "font.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ void Framebuffer::clear()
     memset(framebuffer[back], 0, 512);
 }
 
-int calcPage(int y)
+int Framebuffer::calcPage(int y)
 {
     if (y < 0 || y > 32)
     {
@@ -109,21 +110,13 @@ void Framebuffer::drawRectangle(int x, int y, int length, int width)
 void Framebuffer::drawSymPixels(int xc, int yc, int x, int y)
 {
     setPixel(xc + x, yc + y, true);
-    cout << " | X: " << xc + x << " Y: " << yc + y << endl;
     setPixel(xc - x, yc + y, true);
-    cout << " | X: " << xc - x << " Y: " << yc + y << endl;
     setPixel(xc + x, yc - y, true);
-    cout << " | X: " << xc + x << " Y: " << yc - y << endl;
     setPixel(xc - x, yc - y, true);
-    cout << " | X: " << xc - x << " Y: " << yc - y << endl;
     setPixel(xc + y, yc + x, true);
-    cout << " | X: " << xc + y << " Y: " << yc + x << endl;
     setPixel(xc - y, yc + x, true);
-    cout << " | X: " << xc - y << " Y: " << yc + x << endl;
     setPixel(xc + y, yc - x, true);
-    cout << " | X: " << xc + y << " Y: " << yc - x << endl;
     setPixel(xc - y, yc - x, true);
-    cout << " | X: " << xc - y << " Y: " << yc - x << endl;
 }
 
 void Framebuffer::drawCircle(int xc, int yc, int r)
@@ -148,6 +141,47 @@ void Framebuffer::drawCircle(int xc, int yc, int r)
             d = d + 4 * (x - y) + 10;
             y--;
             x++;
+        }
+    }
+}
+
+int Framebuffer::getCharacter(char letter)
+{
+    const char alphabet[25] = {
+        'a',
+        'b',
+        'j'};
+
+    for (int i = 0; i < 26; i++)
+    {
+        if (letter == alphabet[i])
+        {
+            cout << i;
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+void Framebuffer::drawChar(char character, int x, int y)
+{
+    int intOfLetter = getCharacter(character);
+    cout << " intOfLetter: " << intOfLetter << " Character: " << character << endl;
+    for (int row = 0; row < 8; row++)
+    {
+        for (int col = 0; col < 8; col++)
+        {
+            if (letter[intOfLetter][col] & (1 << (8 - 1 - col)))
+            {
+                setPixel(x + col, y + row, 1);
+                cout << " X: " << col << " Y: " << row << " Value: " << 1 << endl;
+            }
+            else
+            {
+                setPixel(x + col, y + row, 0);
+                cout << " X: " << col << " Y: " << row << " Value: " << 0 << endl;
+            }
         }
     }
 }

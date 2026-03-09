@@ -11,16 +11,17 @@ pico_sdk_init()
 
 add_executable(graphics_pipeline_128x32
 main.cpp
+test.cpp
 framebuffer/framebuffer.cpp
 framebuffer/framebuffer.h
 driver/ssd1305.cpp
-letters/letters.cpp
+font/font.cpp
 )
 
 target_include_directories(graphics_pipeline_128x32 PRIVATE
     driver/
     framebuffer/
-    letters/
+    font/
 )
 
 target_link_libraries(graphics_pipeline_128x32 
