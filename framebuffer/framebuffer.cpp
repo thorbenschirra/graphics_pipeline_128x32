@@ -147,12 +147,9 @@ void Framebuffer::drawCircle(int xc, int yc, int r)
 
 int Framebuffer::getCharacter(char letter)
 {
-    const char alphabet[25] = {
-        'a',
-        'b',
-        'j'};
+    const char alphabet[27] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '<'};
 
-    for (int i = 0; i < 26; i++)
+    for (int i = 0; i < 28; i++)
     {
         if (letter == alphabet[i])
         {
@@ -164,23 +161,25 @@ int Framebuffer::getCharacter(char letter)
     return -1;
 }
 
-void Framebuffer::drawChar(char character, int x, int y)
+void Framebuffer::drawChar(char character, int w, int h)
 {
     int intOfLetter = getCharacter(character);
-    cout << " intOfLetter: " << intOfLetter << " Character: " << character << endl;
-    for (int row = 0; row < 8; row++)
+    uint8_t charBitmap[8];
+    memcpy(charBitmap, letter[intOfLetter], 8);
+
+    for (int y = 0; y < 8; y++)
     {
-        for (int col = 0; col < 8; col++)
+        uint8_t curr = charBitmap[y];
+
+        for (int x = 0; x < 8; x++)
         {
-            if (letter[intOfLetter][col] & (1 << (8 - 1 - col)))
+            if ((curr & (1 << (7 - x))) != 0)
             {
-                setPixel(x + col, y + row, 1);
-                cout << " X: " << col << " Y: " << row << " Value: " << 1 << endl;
+                setPixel(x + w, y + h, 1);
             }
             else
             {
-                setPixel(x + col, y + row, 0);
-                cout << " X: " << col << " Y: " << row << " Value: " << 0 << endl;
+                setPixel(x + w, y + h, 0);
             }
         }
     }

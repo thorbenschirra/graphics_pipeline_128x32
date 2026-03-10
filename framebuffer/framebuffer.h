@@ -21,5 +21,5 @@ public:
     void drawSymPixels(int xc, int yc, int x, int y);
     void drawCircle(int xc, int yc, int r);
     int getCharacter(char letter);
-    void drawChar(char character, int x, int y);
+    void drawChar(char character, int w, int h);
 };

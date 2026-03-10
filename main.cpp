@@ -15,7 +15,14 @@ int main()
 
     Framebuffer fb;
 
-    fb.drawChar('j', 4, 4);
+    fb.drawChar('d', 4, 4);
+    fb.drawChar('e', 12, 4);
+    fb.drawChar('e', 20, 4);
+    fb.drawChar('z', 28, 4);
+    fb.drawChar('n', 44, 4);
+    fb.drawChar('u', 52, 4);
+    fb.drawChar('t', 60, 4);
+    fb.drawChar('s', 68, 4);
 
     ssd1305_flush(fb.getBuffer());
 }
