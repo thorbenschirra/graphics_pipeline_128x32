@@ -14,7 +14,7 @@ It is implemented for the SSD1305 and I specifically used the Waveshare 2.23 inc
 
 ### Features
 
-- write any sentence to the display using english alphabet-only characters
+- write any sentence to the display using **english alphabet-only characters**
 -
 
 ### Usage
@@ -22,7 +22,6 @@ It is implemented for the SSD1305 and I specifically used the Waveshare 2.23 inc
 - buy the **Raspberry Pi Pico 2 W** and the **Waveshare 2.23 inch** OLED display (links can be found at the bottom)
 - the Pico plugs directly onto the display (make sure to plug it in the correct way)
 - in the main.cpp file create your own program and display text using **_fb.writeSentence()_**, **_fb.drawChar()_**, **_fb.drawCircle()_** or **_fb.drawLine()_** functions.
--
 
 ### Future features
 
@@ -33,5 +32,5 @@ It is implemented for the SSD1305 and I specifically used the Waveshare 2.23 inc
 
 ### Links
 
-Waveshare 2.23 inch OLED display - https://www.waveshare.com/pico-oled-2.23.htm?srsltid=AfmBOorOy3FZRBvzfxgl5yqcQEWZ6FVBKS5q1xV23o8UFARRk-dEuEVg
-Raspberry Pi Pico 2 W (select shop based on your country) - https://www.raspberrypi.com/products/raspberry-pi-pico-2/?variant=pico-2-w
+- Waveshare 2.23 inch OLED display - https://www.waveshare.com/pico-oled-2.23.htm?srsltid=AfmBOorOy3FZRBvzfxgl5yqcQEWZ6FVBKS5q1xV23o8UFARRk-dEuEVg
+- Raspberry Pi Pico 2 W (select shop based on your country) - https://www.raspberrypi.com/products/raspberry-pi-pico-2/?variant=pico-2-w
