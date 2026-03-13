@@ -147,9 +147,9 @@ void Framebuffer::drawCircle(int xc, int yc, int r)
 
 int Framebuffer::getCharacter(char letter)
 {
-    const char alphabet[27] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '<'};
+    const char alphabet[28] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '<', ' '};
 
-    for (int i = 0; i < 28; i++)
+    for (int i = 0; i < 29; i++)
     {
         if (letter == alphabet[i])
         {
@@ -182,5 +182,22 @@ void Framebuffer::drawChar(char character, int w, int h)
                 setPixel(x + w, y + h, 0);
             }
         }
+    }
+}
+
+void Framebuffer::writeSentence(std::string sentence)
+{
+    int x = 0;
+    int y = 0;
+    for (int i = 0; i < sentence.length(); i++)
+    {
+        if (x > 120)
+        {
+            y += 8;
+            x = 0;
+        }
+
+        drawChar(sentence[i], x, y);
+        x += 8;
     }
 }

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <cstdint>
+#include <string>
 
 class Framebuffer
 {
@@ -22,4 +23,5 @@ public:
     void drawCircle(int xc, int yc, int r);
     int getCharacter(char letter);
     void drawChar(char character, int w, int h);
+    void writeSentence(std::string sentence);
 };
